@@ -27,7 +27,6 @@ router.post("/", async(req,res)=>{
 router.delete("/:id", async (req, res) => {
     try {
         if(Ticket.exists){
-            
             await Ticket.findByIdAndDelete(req.params.id);
             res.json({ message: "Ticket eliminado" });
         }else{

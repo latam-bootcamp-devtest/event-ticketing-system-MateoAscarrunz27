@@ -12,6 +12,18 @@ router.get("/", async(req,res) => {
     }
 });
 
+router.post("/", async(req,res)=>{
+    try{
+        const {ticketId, userId, eventId}=req.body;
+        const newTicket=new Ticket({ticketId, userId, eventId});
+        await newTicket.save();
+        res.status(201).json(newTicket);
+    }catch(err){
+        res.status(500).json({error: err.message});
+    }
+})
+
+
 router.delete("/:id", async (req, res) => {
     try {
         if(Ticket.exists){

@@ -27,7 +27,7 @@ router.post("/", async(req,res)=>{
             const newEvent=new Events({eventId, name,date,aviableSeats});
             await newEvent.save();
             res.status(201).json(newEvent);
-            console.log (hoy);
+            
         }else{
             res.status(401).json("No se puede ingresar 0 asientos o poner una fecha anterior");
         }
